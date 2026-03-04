@@ -1,2 +1,2 @@
 # Bioinformatics
-Lesson File of Cng
+Lesson File of Chang Haoran for Bioinformatics
