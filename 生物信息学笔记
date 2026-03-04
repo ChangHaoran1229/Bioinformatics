@@ -1,0 +1,234 @@
+# 一、生物信息学笔记
+特别注意：本门课并非教授编程技能，而是训练学生**如何使用编程解决实际问题**。
+### (一) 课程基本信息介绍
+1. 先修课程要求：实际上并无硬性要求，只要具有高数基础，有一定编程能力，接触过Linux即可。
+2. 后续课程推荐：《基于Python的科学与数值计算》、《计算机程序设计基础 (Python)》、《Python程序设计进阶》。
+3. 课程基本安排
+> 第1-4周  Linux(bash)
+> 第5-10周 R
+> 第11-16周 Python
+4. 参考资料以及实践教程：详见[教学大纲](https://365.kdocs.cn/l/caAbfIt5y8Fk)
+
+### (二) 课程特色
+1. 教学目标
+>介绍基本概念和原理；
+>介绍生物信息可以研究的问题和方向，从而引发实践和研究的兴趣；
+>构建学习和实践的框架
+2. 学习方法（Peer Learning）——基于[费曼学习法](https://zhuanlan.zhihu.com/p/671767755)
+
+### (三) 生物信息学（bioinformatics）与传统生物学
+>生物信息学四步走	Information	Analysis	Modeling	**Question**
+>传统生物学四步走	**Question**	Information	Analysis	Modeling
+
+如下图，传统生物学属于科学发展第三范式，生物信息学作为数据时代的产物则是进入到第四范式。
+
+![image-20260304161424881](https://wcsdsd2333.github.io/image-1.png)
+
+### (四) 算法(algorithm)与模型(model)
+- 算法：
+   - 排序算法： 快速排序、归并排序等
+   - 动态规划算法： 矩阵链乘法、最长公共子序列等
+- 模型：
+   - 概率模型： 隐马尔可夫模型（HMM）、贝叶斯网络等
+   - 机器学习模型： 线性回归、逻辑回归、神经网络等
+- 算法与模型的区别：
+   - 算法是一种解决问题的步骤或方法
+   - 模型是算法作用于数据后对现实世界某种现象的抽象表示
+   - 算法可以用来训练模型，模型可以用来预测和分析数据
+
+### (五) 生物信息学应用
+- 基因组学： 基因组测序、基因功能预测、变异分析等
+- 转录组学： RNA 测序、基因表达分析、可变剪接等
+- 蛋白质组学： 蛋白质结构预测、功能注释等
+- 代谢组学： 代谢物鉴定、代谢通路分析等
+
+### (六) 生物信息学工具
+- 序列分析工具： BLAST、Clustal Omega 等
+- 结构预测工具： PhyreStorm、AlphaFold 等
+- 功能注释工具： GO、KEGG 等
+
+### (七) 生物信息学发展趋势
+- 大数据驱动： 利用海量数据进行科学研究和临床应用
+- 人工智能： 利用深度学习等技术进行更精准的预测和分析
+
+---
+
+
+
+# 二、生物信息学习计划
+
+
+
+### 第 1-4 周：Linux 基础与生物信息学应用
+#### 第 1 周：Linux 文件系统与基本命令
+**学习目标**
+熟悉 Linux 环境，掌握文件系统操作和常用命令。
+
+**详细内容**
+  - Linux 简介与登录：了解 Linux 发行版（如 `Ubuntu`），通过终端或 SSH 登录远程服务器。
+
+  - 文件系统导航：`pwd` 查看当前路径，`ls`列出文件（常用选项 `-l`, `-a`, `-lh`），`cd` 切换目录（绝对路径与相对路径）。
+
+  - 目录操作：`mkdir` 创建目录（`-p` 创建多级），`rmdir` 删除空目录。
+
+  - 文件操作：`cp` 复制文件/目录（`-r` 递归），`mv` 移动/重命名，`rm` 删除（`-r` 递归，`-f` 强制）。
+
+  - 查看文件内容：`cat`，`less`，`head`，`tail`。
+
+  - 文件权限与所有权：`chmod`，`chown` 的基本概念与使用。
+
+#### 第 2 周：文本处理工具
+**学习目标**
+熟练使用文本处理工具对生物信息数据（如 FASTQ、GTF 等）进行筛选、转换和统计。
+**详细内容**
+- **grep**：模式搜索（`-v` 反向，`-c` 计数，`-E` 扩展正则），用于提取匹配的序列或注释行。
+- **cut**：按列切割文本（`-d` 指定分隔符，`-f` 指定列），常用于提取表格数据的特定字段。
+- **sort**：排序（`-n` 数值排序，`-k` 指定列，`-r` 降序），可用于排序基因表达量等。
+- **uniq**：去重与统计（`-c` 计数），常与 `sort` 结合使用。
+- **awk**：强大的文本处理语言，掌握基本结构 `awk '{print $1}'`，条件筛选，内置变量（NR, - NF），以及简单的统计（求和、平均）。
+- **sed**：流编辑器，用于替换、删除行（如 s`ed 's/old/new/g'`，`sed -n '5,10p'`）。
+
+#### 第 3 周：Shell 脚本编写与自动化
+**学习目标**
+编写简单的 Shell 脚本，实现自动化分析流程。
+**详细内容**
+- 脚本基础：Shebang `(#!/bin/bash)`，变量赋值与引用，命令行参数（`$1`,` $@`）。
+- 条件判断：`if-then-else`，`test` 命令，文件判断（`-e`, `-f`, `-d`）。
+- 循环：`for` 循环（遍历文件列表），`while` 循环（逐行读取文件）。
+- 函数：定义与调用函数，局部变量。
+- 作业控制：后台运行（`&`），任务管理（`jobs`, `fg`, `bg`），`nohup` 和 `screen` 的使用。
+- 流程控制：`break` 和 `continue`。
+
+#### 第 4 周：生物信息学工具安装与使用
+**学习目标**
+学会安装和运行常用的生物信息学软件（FastQC、BLAST），并理解输出结果。
+**详细内容**
+- 软件安装方法：`apt`（Ubuntu）、`conda`（推荐生物信息学环境）、源码编译。
+- FastQC：安装，对 FASTQ 文件运行质控，解读 HTML 报告中的各个模块（碱基质量、GC含量、接头污染等）。
+- BLAST 基础：构建本地 BLAST 数据库（`makeblastdb`），运行 `blastn`/`blastp`，解释输出格式（`tabular` 格式，自定义输出列）。
+- 其他工具介绍：`multiqc` 整合多个 FastQC 报告，`sra-tools` 下载数据。
+
+---
+### 第 5-10 周：R 语言基础与生物信息学分析
+#### 第 5 周：R 语言基础
+**学习目标**
+掌握 R 基本语法、数据结构及包管理。
+**详细内容**
+- R 与 RStudio 安装：R 基础环境，RStudio IDE 的使用。
+- 基本语法：变量赋值，注释，数学运算。
+- 数据类型：数值、字符、逻辑、因子；向量、矩阵、列表、数据框（重点）。
+- 函数：内置函数（`c()`, `length()`, `summary()` 等），编写自定义函数。
+- 包管理：`install.packages()`，`library()`，`BiocManager` 安装 Bioconductor 包。
+帮助系统：`help()`，`?`，`vignette()`。
+
+#### 第 6 周：数据导入与处理（read.table, dplyr）
+**学习目标**
+学会将外部数据导入 R，并使用 `dplyr` 进行高效的数据处理。
+**详细内容**
+- 数据导入：`read.table()` 家族（`read.csv`, `read.delim`），参数 `header`, `sep`, `stringsAsFactors`。读取 Excel 文件（`readxl` 包）。
+- tibble 与数据框：`tibble` 的概念。
+- dplyr 核心函数：`filter()` 筛选行，`select()` 选择列，`mutate()` 创建新列，`arrange()` 排序，`group_by()` 与 `summarise()` 分组汇总。
+- 管道操作：`%>%`（或 R 4.1+ 的 `|>`）的使用。
+- 连接操作：`inner_join`, `left_join` 等合并多个表格。
+
+#### 第 7 周：数据可视化（ggplot2）
+**学习目标**
+掌握 `ggplot2` 绘制常见统计图形，并能自定义图形样式。
+**详细内容**
+- ggplot2 图形语法：数据、映射（aes）、几何对象（geom_）、统计变换（stat_）、标度（scale_）、分面（facet_）、主题（theme）。
+- 常用图形：散点图（`geom_point`）、箱线图（`geom_boxplot`）、直方图（`geom_histogram`）、密度图（`geom_density`）、条形图（`geom_bar/geom_col`）。
+- 颜色与形状：手动设定（`scale_color_manual`），使用调色板（`RColorBrewer, viridis`）。
+- 主题调整：`theme()` 修改字体、背景、图例位置，使用预设主题（`theme_bw()`, `theme_classic()`）。
+- 保存图形：`ggsave()`。
+
+#### 第 8 周：RNA-Seq 数据预处理（质量控制、标准化）
+**学习目标**
+了解 RNA-seq 分析流程，使用 R 进行数据预处理和标准化。
+**详细内容**
+- RNA-seq 简要流程：从原始数据到表达矩阵的常规步骤（比对、定量），重点在于下游分析的输入数据格式。
+- 读取定量结果：使用 `tximport` 读取 Salmon/kallisto 的结果，生成基因水平的表达矩阵。
+- 质量控制：`edgeR` 或 `DESeq2` 中的过滤低表达基因（`filterByExpr`），样本间相关性热图，PCA 图。
+- 标准化：RPKM/FPKM 与 TPM 的概念，但更推荐在差异分析中使用内部标准化方法（如 DESeq2 的 median-of-ratios）。
+- 数据探索：使用 `boxplot` 或 `ggplot2` 查看原始 counts 分布。
+
+#### 第 9 周：差异表达分析（DESeq2）
+**学习目标**
+使用 `DESeq2` 进行差异表达分析，并解释结果。
+**详细内容** 
+- DESeq2 基础：`DESeqDataSetFromMatrix` 构建对象，`DESeq` 执行分析。
+- 结果提取：`results()` 函数，指定对比组，提取 log2 fold change、p 值、调整后 p 值。
+- 结果解读：MA 图，火山图（`ggplot2` 绘制），显著基因的筛选（`padj < 0.05`，`|log2FC| > 1`）。
+- 结果输出：使用 `write.csv` 保存结果，添加基因注释。
+- 多重检验校正：了解 BH 方法。
+
+#### 第 10 周：功能富集分析（clusterProfiler）
+**学习目标**
+对差异基因进行功能富集分析（GO、KEGG），并可视化结果。
+**详细内容**
+- clusterProfiler 包：安装及依赖，支持的物种与 ID 类型。
+- 基因 ID 转换：`bitr 函数`，将常用基因名转换为 Entrez ID。
+- GO 富集分析：`enrichGO`，指定 Ontology（BP, CC, MF），输出结果表格。
+- KEGG 富集分析：`enrichKEGG`，使用 organism 参数。
+- 可视化：条形图（`barplot`），气泡图（`dotplot`），富集网络图（`cnetplot`），通路图（`pathview` 或 `browseKEGG`）。
+- GSEA 分析：介绍基因集富集分析的概念，使用 `gseGO` 或 `gseKEGG`。
+
+---
+
+### 第 11-16 周：高级分析与 Python 选择性使用
+#### 第 11 周：单细胞 RNA-Seq 数据分析（Seurat）
+**学习目标**
+了解单细胞 RNA-seq 分析基本流程，使用 Seurat 进行初步分析。
+**详细内容**
+- 单细胞数据特点：稀疏矩阵，细胞-基因表达矩阵。
+- Seurat 对象：创建 Seurat 对象（`CreateSeuratObject`），质量控制指标（线粒体基因比例，nFeature, nCount）。
+- 数据标准化与归一化：`NormalizeData`，`FindVariableFeatures`，`ScaleData`。
+- 降维与聚类：PCA（`RunPCA`），选择 PCs（`ElbowPlot`），UMAP/t-SNE（`RunUMAP`, `RunTSNE`），聚类（`FindNeighbors`, `FindClusters`）。
+- 标记基因检测：`FindAllMarkers`，可视化（`VlnPlot`, `FeaturePlot`, `DotPlot`）。
+- 细胞类型注释：基于已知 marker 手动注释，或使用参考数据集。
+
+#### 第 12 周：基因组变异分析（VCFtools, snpEff）
+**学习目标**
+掌握处理 VCF 文件的基本操作，并进行变异注释。
+**详细内容**
+- VCF 格式：结构、元信息行、数据列的含义。
+- VCFtools：安装，常用命令（提取特定区域、过滤位点、格式转换、计算统计量如 Ts/Tv、Fst）。
+- bcftools：类似工具，用于 VCF/BCF 的查看、索引、过滤。
+- 变异注释：snpEff 的安装与使用，构建自定义数据库，注释 VCF 文件，解释注释结果。
+- 可视化：使用 `ggplot2` 绘制变异在染色体上的分布，或使用 `Gviz` 绘制基因组浏览器风格图形。
+
+#### 第 13 周：Python 基础（变量、数据类型、函数）
+**学习目标**
+掌握 Python 基础语法，为后续数据处理打基础。
+**详细内容**
+- Python 环境搭建：安装 Anaconda，使用 Jupyter Notebook 或 VS Code。
+- 变量与数据类型：整数、浮点数、字符串、布尔值；类型转换。
+- 数据结构：列表、元组、字典、集合（增删改查，常用方法）。
+- 控制流：`if-elif-else`，`for` 循环，`while` 循环，`break`，`continue`。
+- 函数定义：`def`，参数（默认参数、可变参数），返回值，`lambda` 表达式。
+- 模块与包：`import` 语句，使用标准库（如 `os`, `sys`, `math`）。
+
+#### 第 14 周：Python 数据处理（pandas, numpy）
+**学习目标**
+使用 pandas 和 numpy 进行高效的数据操作和数值计算。
+**详细内容**
+- numpy 基础：数组创建（`np.array`, `np.arange`, `np.zeros`），数组运算（广播机制），索引与切片，常用函数（`np.mean`, `np.sum`, `np.log2`）。
+- pandas 数据结构：Series 与 DataFrame，从文件读取数据（`pd.read_csv`, `pd.read_table`）。
+- 数据操作：选择列/行（`loc`, `iloc`），条件筛选，添加/删除列，分组聚合（`groupby`），合并（`merge`, `concat`），处理缺失值（`dropna`, `fillna`）。
+- 应用函数：`apply`, `map`, `applymap`。
+- 与生物信息结合：读取表达矩阵，计算基因间的相关性，筛选差异基因。
+
+#### 第 15 周：Python 数据可视化（matplotlib, seaborn）
+**学习目标**
+使用 matplotlib 和 seaborn 绘制生物信息学常用的统计图形。
+**详细内容**
+- matplotlib 基础：`plt.plot`, `plt.scatter`, `plt.hist`；图形要素（标题、轴标签、图例）；子图（`subplots`）。
+- seaborn 高级绘图：`sns.boxplot`, `sns.violinplot`, `sns.heatmap`, `sns.pairplot`, `sns.distplot`（或 `histplot`）。
+- 结合 pandas 绘图：DataFrame 内置的 `plot` 方法。
+- 图形美化：设置颜色、样式、主题，保存图形（`plt.savefig`）。
+- 生物信息学案例：绘制基因表达箱线图、相关性热图、PCA 散点图、火山图。
+
+#### 第 16 周：项目实践与总结
+**学习内容** 
+综合运用前 15 周所学，完成一个完整的生物信息学分析项目，并撰写报告。
+
+---
